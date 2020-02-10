@@ -31,11 +31,14 @@ public class Drivetrain extends Subsystem {
     SmartDashboard.putNumber("throttle", throttle);
     SmartDashboard.putNumber("turnrate", turnrate);
   }
+  
+  
+
   public double getdistancetraveled(){
-     double encoderticks = m_left0.getSensorCollection().getQuadraturePosition();
+    double encoderticks = m_left0.getSensorCollection().getQuadraturePosition(); 
+    SmartDashboard.putNumber("Traveled Distance", encoderticks);
      return encoderticks;
   }
-  
 
 
   // Put methods for controlling this subsystem

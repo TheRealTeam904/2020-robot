@@ -52,7 +52,7 @@ public class Robot extends TimedRobot {
  @Override
 public void autonomousInit() {
   super.autonomousInit();
-  autonomousCommand = new SimpleAuto();
+  autonomousCommand = new DriveFarAuto(10);
   autonomousCommand.start();
 }
 
@@ -70,10 +70,6 @@ public void teleopInit() {
 
   @Override
   public void teleopPeriodic() {
-    double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
-    double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
-    SmartDashboard.putNumber("LimelightTX", tx);
-    SmartDashboard.putNumber("LimelightTY", ty);
 double Ydeadzone;
 double Xdeadzone;
 if(Math.abs(m_DriveControl.getY())>deadzone) {
@@ -87,14 +83,6 @@ if(Math.abs(m_DriveControl.getX())>deadzone) {
 }else {
   Xdeadzone = 0;
 }
-double ControlX = VisionPIDController.calculate(-tx, 0);
-    if(m_DriveControl.getRawButton(5)){
-      drivetrain.arcadeDrive(-Ydeadzone, ControlX);
-    } else {
-      drivetrain.arcadeDrive(-Ydeadzone, Xdeadzone);
-      VisionPIDController.reset();
-    }
-
 
     double [] ypr_deg = new double[3];
     ErrorCode pigeonResult = pigeon.getYawPitchRoll(ypr_deg);
@@ -106,7 +94,23 @@ double ControlX = VisionPIDController.calculate(-tx, 0);
     SmartDashboard.putString("Pigeon Error Code", pigeonResult.toString());
     SmartDashboard.putString("Pigeon General Status Error Code", generalStatusResult.toString());
     SmartDashboard.putString("Pigeon General Status", genStatus.toString());
-    SmartDashboard.putNumber("ControlX", ControlX);
+
+    if(m_DriveControl.getRawButton(4)){
+      double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
+      double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
+      NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(3);
+      NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(0);
+      SmartDashboard.putNumber("LimelightTX", tx);
+      SmartDashboard.putNumber("LimelightTY", ty);
+      double ControlX = VisionPIDController.calculate(-tx, 0);
+      drivetrain.arcadeDrive(-Ydeadzone, ControlX);
+      SmartDashboard.putNumber("ControlX", ControlX);
+    } else{
+      NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(1);
+      NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(1);
+      drivetrain.arcadeDrive(-Ydeadzone, Xdeadzone);
+      VisionPIDController.reset();
+    }
 
 
 
