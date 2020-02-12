@@ -7,52 +7,46 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class DriveFarAuto extends Command {
-  double desireddistance;
-
-
-  public DriveFarAuto(double distance) {
+public class ShootInAuto extends Command {
+  public ShootInAuto() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    desireddistance = distance;
-    requires(Robot.drivetrain);
+    requires(Robot.shooter);
+    setInterruptible(true);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.drivetrain.resetdistancetraveled();
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
-
-    Robot.drivetrain.arcadeDrive( .2, 0);
-    SmartDashboard.getNumber("Distance Traveled", Robot.drivetrain.getdistancetraveled());
-
-
+    Robot.shooter.ShootMotorSpeed(-0.57);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.drivetrain.getdistancetraveled() > desireddistance;
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.drivetrain.arcadeDrive(0,0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    
   }
 }

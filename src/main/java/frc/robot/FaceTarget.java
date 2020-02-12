@@ -31,6 +31,9 @@ public class FaceTarget extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(3);
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(0);
     TurnrateController.reset();
     ThrottleController.reset();
 

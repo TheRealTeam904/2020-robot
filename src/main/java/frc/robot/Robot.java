@@ -52,7 +52,10 @@ public class Robot extends TimedRobot {
  @Override
 public void autonomousInit() {
   super.autonomousInit();
-  autonomousCommand = new DriveFarAuto(10);
+  /*if (autonomousCommand != null) {
+    autonomousCommand.cancel();
+  }*/
+  autonomousCommand = new FaceTarget(0);
   autonomousCommand.start();
 }
 
@@ -95,7 +98,7 @@ if(Math.abs(m_DriveControl.getX())>deadzone) {
     SmartDashboard.putString("Pigeon General Status Error Code", generalStatusResult.toString());
     SmartDashboard.putString("Pigeon General Status", genStatus.toString());
 
-    if(m_DriveControl.getRawButton(4)){
+    if(m_DriveControl.getRawButton(5)){
       double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
       double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
       NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(3);
@@ -114,7 +117,7 @@ if(Math.abs(m_DriveControl.getX())>deadzone) {
 
 
 
-    if(m_DriveControl.getRawButton(3)){
+    if(m_OperateControl.getRawButton(4)){
       shooter.ShootMotorSelect();
     } else {
       shooter.ShootMotorSpeed(0);

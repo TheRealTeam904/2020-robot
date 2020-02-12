@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class SimpleAuto extends CommandGroup {
@@ -19,6 +20,8 @@ public class SimpleAuto extends CommandGroup {
     // addSequential(new Command2());
     // these will run in order.
     addSequential(new FaceTarget(96));
+    addSequential(new ShootInAuto());
+    addSequential(new DriveFarAuto(10));
 
 
 

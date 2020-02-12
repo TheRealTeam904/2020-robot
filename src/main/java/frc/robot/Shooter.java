@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -23,7 +24,7 @@ public class Shooter extends Subsystem {
  private SpeedControllerGroup ShootMotors = new SpeedControllerGroup(ShootMotor1, ShootMotor2);
  
  public Shooter(){
-   ShootMotors.setInverted(true);
+   //ShootMotors.setInverted(true);
  }
 
  public void SpeedSelectUp(){
@@ -36,7 +37,7 @@ public class Shooter extends Subsystem {
  }
 
  
- public void ShootMotorSpeed(double speed){
+ public void ShootMotorSpeed(double speed) {
   ShootMotors.set(speed);
  }
 
