@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Shooter extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
+ 
  private WPI_TalonSRX ShootMotor1 = new WPI_TalonSRX(8);
  private WPI_TalonSRX ShootMotor2 = new WPI_TalonSRX(9);
  private SpeedControllerGroup ShootMotors = new SpeedControllerGroup(ShootMotor1, ShootMotor2);
@@ -41,7 +42,7 @@ public class Shooter extends Subsystem {
   ShootMotors.set(speed);
  }
 
-double [] ShootSpeedTable = {0.51, 0.57, 0.86, 1.0};
+double [] ShootSpeedTable = {0.51, 0.60, 0.76, 0.88, 1.0};
 int ItemTracker = 0;
 public void ShootMotorSelect(){
   double speed = ShootSpeedTable[ItemTracker];

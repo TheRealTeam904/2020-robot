@@ -19,9 +19,11 @@ public class SimpleAuto extends CommandGroup {
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addSequential(new FaceTarget(96));
-    addSequential(new ShootInAuto());
-    addSequential(new DriveFarAuto(10));
+    addSequential(new ReverseReverse(-15));
+    addSequential(new FaceTarget(), 3);
+    addSequential(new ShootInAuto(), 7);
+    addSequential(new StopShootAuto());
+    addSequential(new ReverseReverse(-15));
 
 
 

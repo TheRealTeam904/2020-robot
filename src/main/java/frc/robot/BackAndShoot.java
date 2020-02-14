@@ -9,23 +9,20 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class NotSoSimpleAuto extends CommandGroup {
+public class BackAndShoot extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public NotSoSimpleAuto() {
+  public BackAndShoot() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-addParallel(new ReverseReverse(-40));
-addSequential(new TurnToHeading(-59), 5);
-addSequential(new DriveFarAuto(60));
-addSequential(new TurnToHeading(59));
-addSequential(new FaceTarget(), 3);
-addSequential(new ShootInAuto(), 10);
-addSequential(new StopShootAuto());
-addParallel(new ReverseReverse(-55));
+    addSequential(new ReverseReverse(-55));
+    addSequential(new FaceTarget(), 4);
+    addSequential(new ShootInAuto(), 13);
+    addSequential(new StopShootAuto());
+
     // To run multiple commands at the same time,
     // use addParallel()
     // e.g. addParallel(new Command1());

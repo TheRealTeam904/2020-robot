@@ -7,13 +7,10 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ShootInAuto extends Command {
-  public ShootInAuto() {
+public class StopShootAuto extends Command {
+  public StopShootAuto() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.shooter);
@@ -23,13 +20,12 @@ public class ShootInAuto extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.shooter.ShootMotorSpeed(0.69);
+    Robot.shooter.ShootMotorSpeed(0);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -47,6 +43,5 @@ public class ShootInAuto extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    
   }
 }

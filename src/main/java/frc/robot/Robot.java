@@ -55,7 +55,7 @@ public void autonomousInit() {
   /*if (autonomousCommand != null) {
     autonomousCommand.cancel();
   }*/
-  autonomousCommand = new FaceTarget(0);
+  autonomousCommand = new BackAndShoot();
   autonomousCommand.start();
 }
 

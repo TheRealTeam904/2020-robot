@@ -21,8 +21,8 @@ public class FaceTarget extends Command {
   double h_camera = 41;
   double disireddistance;
 
-  public FaceTarget(double distance) {
-    disireddistance = distance;
+  public FaceTarget() {
+    //disireddistance = distance;
     requires(Robot.drivetrain);
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -32,8 +32,6 @@ public class FaceTarget extends Command {
   @Override
   protected void initialize() {
 
-    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(3);
-    NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(0);
     TurnrateController.reset();
     ThrottleController.reset();
 
@@ -42,6 +40,8 @@ public class FaceTarget extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(3);
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(0);
     double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
     double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
     double ControlX = -TurnrateController.calculate(tx, 0);
@@ -49,7 +49,7 @@ public class FaceTarget extends Command {
     Robot.pigeon.getYawPitchRoll(ypr_deg);
     SmartDashboard.putNumber("Pitch", ypr_deg[1]);
 
-    SmartDashboard.putNumber("LimelightTX", tx);
+    SmartDashboard.putNumber("LimelightTX Auto", tx);
     SmartDashboard.putNumber("LimelightTY", ty);
     Robot.drivetrain.arcadeDrive(0, ControlX);
   }
@@ -57,7 +57,7 @@ public class FaceTarget extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return TurnrateController.atSetpoint() && ThrottleController.atSetpoint();
+    return false /*TurnrateController.atSetpoint() && ThrottleController.atSetpoint()*/;
 
   }
 
@@ -65,6 +65,7 @@ public class FaceTarget extends Command {
   @Override
   protected void end() {
     Robot.drivetrain.arcadeDrive(0,0);
+
   }
 
   // Called when another command which requires one or more of the same
