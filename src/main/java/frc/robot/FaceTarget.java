@@ -31,7 +31,7 @@ public class FaceTarget extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
+    SmartDashboard.putString("Current Command", "FaceTarget");
     TurnrateController.reset();
     ThrottleController.reset();
 

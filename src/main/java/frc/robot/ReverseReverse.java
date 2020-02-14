@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ReverseReverse extends Command {
   double desireddistance;
@@ -23,6 +24,7 @@ public class ReverseReverse extends Command {
   @Override
   protected void initialize() {
     Robot.drivetrain.resetdistancetraveled();
+    SmartDashboard.putString("Current Command", "ReverseReverse");
   }
 
   // Called repeatedly when this Command is scheduled to run

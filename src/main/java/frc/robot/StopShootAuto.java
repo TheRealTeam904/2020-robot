@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class StopShootAuto extends Command {
   public StopShootAuto() {
@@ -20,6 +21,7 @@ public class StopShootAuto extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    SmartDashboard.putString("Current Command", "StopShootAuto");
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -31,7 +33,7 @@ public class StopShootAuto extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true

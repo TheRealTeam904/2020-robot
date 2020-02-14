@@ -25,6 +25,7 @@ public class DriveFarAuto extends Command {
   @Override
   protected void initialize() {
     Robot.drivetrain.resetdistancetraveled();
+    SmartDashboard.putString("Current Command", "DriveFarAuto");
   }
 
   // Called repeatedly when this Command is scheduled to run

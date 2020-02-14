@@ -55,7 +55,7 @@ public void autonomousInit() {
   /*if (autonomousCommand != null) {
     autonomousCommand.cancel();
   }*/
-  autonomousCommand = new BackAndShoot();
+  autonomousCommand = new SimpleAuto();
   autonomousCommand.start();
 }
 

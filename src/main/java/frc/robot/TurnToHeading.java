@@ -26,6 +26,7 @@ public class TurnToHeading extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    SmartDashboard.putString("Current Command", "TurnToHeading");
     turnRateController.setTolerance(3);
     turnRateController.enableContinuousInput(0, 360);
     double FacingDirection;
