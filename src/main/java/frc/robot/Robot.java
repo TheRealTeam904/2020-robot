@@ -20,7 +20,9 @@ import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
@@ -29,6 +31,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
  * it contains the code necessary to operate a robot with tank drive.
  */
 public class Robot extends TimedRobot {
+  private final SendableChooser<Command> m_chooser = new SendableChooser<>();
   private Command autonomousCommand;
   public static Drivetrain drivetrain;
   public static Shooter shooter;
@@ -47,6 +50,10 @@ public class Robot extends TimedRobot {
     m_DriveControl.setYChannel(1);
     m_DriveControl.setXChannel(4);
     shooter = new Shooter();
+    m_chooser.setDefaultOption("BackAndShoot", new BackAndShoot());
+    m_chooser.addOption("SimpleAuto", new SimpleAuto());
+    m_chooser.addOption("NotSoSimpleAuto", new NotSoSimpleAuto());
+    SmartDashboard.putData("Auto choices", m_chooser); 
   }
 
  @Override
@@ -55,7 +62,7 @@ public void autonomousInit() {
   /*if (autonomousCommand != null) {
     autonomousCommand.cancel();
   }*/
-  autonomousCommand = new SimpleAuto();
+  autonomousCommand = m_chooser.getSelected();
   autonomousCommand.start();
 }
 
