@@ -7,25 +7,21 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class SimpleAuto extends CommandGroup {
+public class LeftShootBlue extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public SimpleAuto() {
+  public LeftShootBlue() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addSequential(new ReverseReverse(-15));
-    addSequential(new FaceTarget(), 3);
-    addSequential(new ShootInAuto(), 7);
-    addSequential(new StopShootAuto());
-    addSequential(new ReverseReverse(-15));
-
-
+    addSequential(new DriveFarAuto(20));
+    addSequential(new TurnToHeading(-90));
+    addSequential(new DriveFarAuto(60));
+    addSequential(new TurnToHeading(90));
 
     // To run multiple commands at the same time,
     // use addParallel()

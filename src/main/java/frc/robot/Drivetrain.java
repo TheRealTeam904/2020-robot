@@ -49,6 +49,9 @@ public class Drivetrain extends Subsystem {
      return -inches;
   }
 
+  public void DistanceDistance(){
+  }
+
 
   // Put methods for controlling this subsystem
   // here. Call these from Commands.

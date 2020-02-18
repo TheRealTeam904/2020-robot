@@ -42,7 +42,7 @@ public class FaceTarget extends Command {
   protected void execute() {
     NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(3);
     NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(0);
-    double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
+    double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(2);
     double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
     double ControlX = -TurnrateController.calculate(tx, 0);
     double [] ypr_deg = new double [3];
@@ -52,7 +52,8 @@ public class FaceTarget extends Command {
     SmartDashboard.putNumber("LimelightTX Auto", tx);
     SmartDashboard.putNumber("LimelightTY", ty);
     Robot.drivetrain.arcadeDrive(0, ControlX);
-  }
+    }
+  
 
   // Make this return true when this Command no longer needs to run execute()
   @Override

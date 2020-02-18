@@ -9,20 +9,16 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class BackAndShoot extends CommandGroup {
+public class TurnNega45 extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public BackAndShoot() {
+  public TurnNega45() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addSequential(new ReverseReverse(-55));
-    addSequential(new FaceTarget(), 4);
-    addSequential(new ShootInAuto(), 13);
-    addSequential(new StopShootAuto());
-
+addSequential(new TurnToHeading(-45));
     // To run multiple commands at the same time,
     // use addParallel()
     // e.g. addParallel(new Command1());

@@ -31,7 +31,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
  * it contains the code necessary to operate a robot with tank drive.
  */
 public class Robot extends TimedRobot {
-  private final SendableChooser<Command> m_chooser = new SendableChooser<>();
+
   private Command autonomousCommand;
   public static Drivetrain drivetrain;
   public static Shooter shooter;
@@ -45,15 +45,13 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     pigeon = new PigeonIMU(0);
     drivetrain = new Drivetrain();
-    m_DriveControl = new Joystick(0);
-    m_OperateControl = new Joystick(1);
-    m_DriveControl.setYChannel(1);
-    m_DriveControl.setXChannel(4);
-    shooter = new Shooter();
-    m_chooser.setDefaultOption("BackAndShoot", new BackAndShoot());
-    m_chooser.addOption("SimpleAuto", new SimpleAuto());
-    m_chooser.addOption("NotSoSimpleAuto", new NotSoSimpleAuto());
-    SmartDashboard.putData("Auto choices", m_chooser); 
+   m_DriveControl = new Joystick(0);
+   m_OperateControl = new Joystick(1);
+   m_DriveControl.setYChannel(1);
+   m_DriveControl.setXChannel(4);
+   shooter = new Shooter();
+   autonomousCommand = new AutoCommand();
+
   }
 
  @Override
@@ -62,7 +60,7 @@ public void autonomousInit() {
   /*if (autonomousCommand != null) {
     autonomousCommand.cancel();
   }*/
-  autonomousCommand = m_chooser.getSelected();
+  Scheduler.getInstance().removeAll();
   autonomousCommand.start();
 }
 
@@ -106,7 +104,7 @@ if(Math.abs(m_DriveControl.getX())>deadzone) {
     SmartDashboard.putString("Pigeon General Status", genStatus.toString());
 
     if(m_DriveControl.getRawButton(5)){
-      double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
+      double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(2);
       double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
       NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(3);
       NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(0);

@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -23,7 +24,7 @@ public class Shooter extends Subsystem {
  private WPI_TalonSRX ShootMotor1 = new WPI_TalonSRX(8);
  private WPI_TalonSRX ShootMotor2 = new WPI_TalonSRX(9);
  private SpeedControllerGroup ShootMotors = new SpeedControllerGroup(ShootMotor1, ShootMotor2);
- 
+ double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
  public Shooter(){
    //ShootMotors.setInverted(true);
  }
@@ -42,12 +43,21 @@ public class Shooter extends Subsystem {
   ShootMotors.set(speed);
  }
 
-double [] ShootSpeedTable = {0.51, 0.60, 0.76, 0.88, 1.0};
+double [] ShootSpeedTable = {0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 1.0};
 int ItemTracker = 0;
 public void ShootMotorSelect(){
   double speed = ShootSpeedTable[ItemTracker];
   ShootMotors.set(speed);
  }
+
+ //public void SpeedSelectDistance(){
+  //if(ty > 10){
+  //ShootMotors.set(1.0);
+  //}
+ // if(ty < 10){
+   // ShootMotors.set(1.0);
+  //}
+ //}
 
  
 

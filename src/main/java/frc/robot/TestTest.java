@@ -7,30 +7,29 @@
 
 package frc.robot;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class ShootInAuto extends Command {
-  public ShootInAuto() {
+public class TestTest extends Command {
+double kP = 0.1;
+
+  public TestTest(double distance) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.shooter);
-    setInterruptible(true);
+    requires(Robot.drivetrain);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    SmartDashboard.putString("Current Command", "ShootInAuto");
+    Robot.drivetrain.resetdistancetraveled();
+    Robot.drivetrain.getdistancetraveled();
+ //double error = ;
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.shooter.ShootMotorSpeed(0.69);
+    //double output = kP * error
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -48,6 +47,5 @@ public class ShootInAuto extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    
   }
 }

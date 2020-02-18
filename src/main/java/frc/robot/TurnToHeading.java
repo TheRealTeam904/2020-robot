@@ -57,6 +57,6 @@ public class TurnToHeading extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return turnRateController.atSetpoint();
+    return false; /*turnRateController.atSetpoint();*/
   }
 }
