@@ -9,19 +9,18 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class AllAutoFront extends CommandGroup {
+public class Pitbull extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public AllAutoFront() {
+  public Pitbull() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addSequential(new FaceTarget(), 2);
-    addSequential(new ShootAutoFront(), 10);
-    addSequential(new StopShootAuto());
-
+    addSequential(new DriveFarAuto(20));
+    addSequential(new FaceTarget());
+    addSequential(new ShootAutoFront());
     // To run multiple commands at the same time,
     // use addParallel()
     // e.g. addParallel(new Command1());

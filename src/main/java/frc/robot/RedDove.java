@@ -9,20 +9,20 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class LeftShootBlue extends CommandGroup {
+public class RedDove extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public LeftShootBlue() {
+  public RedDove() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addSequential(new DriveFarAuto(20));
-    addSequential(new TurnToHeading(-90));
-    addSequential(new DriveFarAuto(60));
-    addSequential(new TurnToHeading(90));
-
+    addSequential(new TurnToHeading(-45));
+    addSequential(new ReverseReverse(-90));
+    addSequential(new TurnToHeading(45));
+    addSequential(new FaceTarget(), 2);
+    addSequential(new ShootAutoBack());
     // To run multiple commands at the same time,
     // use addParallel()
     // e.g. addParallel(new Command1());

@@ -9,20 +9,23 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class AllAutoBack extends CommandGroup {
+public class RedCrow extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public AllAutoBack() {
+  public RedCrow() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addSequential(new FaceTarget(), 2);
-    addSequential(new ShootAutoBack(), 10);
-    addSequential(new StopShootAuto());
+    addSequential(new DriveFarAuto(20));
+    addSequential(new TurnToHeading(20));
+    addSequential(new FaceTarget());
+    addSequential(new ShootAutoFront());
+    
 
-    // To run multiple commands at the same time,
+
+    // To run multiple commands at the )same time,
     // use addParallel()
     // e.g. addParallel(new Command1());
     // addSequential(new Command2());

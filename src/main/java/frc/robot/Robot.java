@@ -31,7 +31,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
  * it contains the code necessary to operate a robot with tank drive.
  */
 public class Robot extends TimedRobot {
-
+  private final SendableChooser<Command> m_chooser = new SendableChooser<>();
   private Command autonomousCommand;
   public static Drivetrain drivetrain;
   public static Shooter shooter;
@@ -50,8 +50,19 @@ public class Robot extends TimedRobot {
    m_DriveControl.setYChannel(1);
    m_DriveControl.setXChannel(4);
    shooter = new Shooter();
-   autonomousCommand = new AutoCommand();
+   m_chooser.setDefaultOption("Wolf", new Wolf());
+   m_chooser.addOption("PitBull", new Pitbull());
+   m_chooser.addOption("RedCrow", new RedCrow());
+   m_chooser.addOption("RedDove", new RedDove());
+   m_chooser.addOption("RedMan", new RedMan());
+   m_chooser.addOption("RedTurtle", new RedTurtle());
+   m_chooser.addOption("BlueCrow", new BlueCrow());
+   m_chooser.addOption("BlueDove", new BlueDove());
+   m_chooser.addOption("BlueMan", new BlueMan());
+   m_chooser.addOption("BlueTurtle", new BlueTurtle());
 
+
+   SmartDashboard.putData("Autos", m_chooser);
   }
 
  @Override
@@ -60,7 +71,7 @@ public void autonomousInit() {
   /*if (autonomousCommand != null) {
     autonomousCommand.cancel();
   }*/
-  Scheduler.getInstance().removeAll();
+  autonomousCommand = m_chooser.getSelected();
   autonomousCommand.start();
 }
 

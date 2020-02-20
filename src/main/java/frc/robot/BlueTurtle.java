@@ -9,19 +9,21 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class LeftShootRed extends CommandGroup {
+public class BlueTurtle extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public LeftShootRed() {
+  public BlueTurtle() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
     addSequential(new DriveFarAuto(20));
-    addSequential(new TurnToHeading(-90));
-    addSequential(new DriveFarAuto(60));
     addSequential(new TurnToHeading(90));
+    addSequential(new DriveFarAuto(60));
+    addSequential(new TurnToHeading(-90));
+    addSequential(new FaceTarget());
+    addSequential(new ShootAutoBack());
 
     // To run multiple commands at the same time,
     // use addParallel()
