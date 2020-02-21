@@ -9,20 +9,16 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class BlueDove extends CommandGroup {
+public class Robin extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public BlueDove() {
+  public Robin() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addSequential(new TurnToHeading(45));
-    addSequential(new ReverseReverse(-60));
-    addSequential(new TurnToHeading(-45));
-    addSequential(new FaceTarget(), 2);
-    addSequential(new ShootAutoBack());
+
     // To run multiple commands at the same time,
     // use addParallel()
     // e.g. addParallel(new Command1());

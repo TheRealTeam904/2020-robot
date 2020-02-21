@@ -9,23 +9,23 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
-public class RedTurtle extends CommandGroup {
+public class Dorito extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public RedTurtle() {
+  public Dorito() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
     addSequential(new DriveFarAuto(20));
-    addSequential(new TurnToHeading(-90));
-    addSequential(new DriveFarAuto(60));
-    addSequential(new TurnToHeading(90));
+    addSequential(new TurnToHeading(-20));
     addSequential(new FaceTarget());
-    addSequential(new ShootAutoBack());
+    addSequential(new ShootAutoFront());
+    
 
-    // To run multiple commands at the same time,
+
+    // To run multiple commands at the )same time,
     // use addParallel()
     // e.g. addParallel(new Command1());
     // addSequential(new Command2());

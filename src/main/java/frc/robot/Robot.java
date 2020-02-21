@@ -52,14 +52,14 @@ public class Robot extends TimedRobot {
    shooter = new Shooter();
    m_chooser.setDefaultOption("Wolf", new Wolf());
    m_chooser.addOption("PitBull", new Pitbull());
-   m_chooser.addOption("RedCrow", new RedCrow());
-   m_chooser.addOption("RedDove", new RedDove());
-   m_chooser.addOption("RedMan", new RedMan());
-   m_chooser.addOption("RedTurtle", new RedTurtle());
-   m_chooser.addOption("BlueCrow", new BlueCrow());
-   m_chooser.addOption("BlueDove", new BlueDove());
-   m_chooser.addOption("BlueMan", new BlueMan());
-   m_chooser.addOption("BlueTurtle", new BlueTurtle());
+   m_chooser.addOption("Crow", new Crow());
+   m_chooser.addOption("Dove", new Dove());
+   m_chooser.addOption("Robin", new Robin());
+   m_chooser.addOption("Pidgeon", new Pigeon());
+   m_chooser.addOption("Dorito", new Dorito());
+   m_chooser.addOption("Pretzel", new Pretzel());
+   m_chooser.addOption("Cheeto", new Cheeto());
+   m_chooser.addOption("Puffs", new Puffs());
 
 
    SmartDashboard.putData("Autos", m_chooser);
