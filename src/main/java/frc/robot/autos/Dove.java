@@ -5,22 +5,27 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.autos;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.FaceTarget;
+import frc.robot.ReverseReverse;
+import frc.robot.ShootAutoBack;
+import frc.robot.TurnToHeading;
 
-public class RedDove extends CommandGroup {
+public class Dove extends CommandGroup {
   /**
    * Add your docs here.
+   * Turn counter-Clock 45, Reverse 90, turn clock 45, face target, and shoot
    */
-  public RedDove() {
+  public Dove() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addSequential(new TurnToHeading(-45));
-    addSequential(new ReverseReverse(-90));
     addSequential(new TurnToHeading(45));
+    addSequential(new ReverseReverse(-90));
+    addSequential(new TurnToHeading(-45));
     addSequential(new FaceTarget(), 2);
     addSequential(new ShootAutoBack());
     // To run multiple commands at the same time,

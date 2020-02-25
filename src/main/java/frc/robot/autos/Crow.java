@@ -5,24 +5,32 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.autos;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.DriveFarAuto;
+import frc.robot.FaceTarget;
+import frc.robot.ShootAutoFront;
+import frc.robot.TurnToHeading;
 
-public class Puffs extends CommandGroup {
+public class Crow extends CommandGroup {
   /**
    * Add your docs here.
+   * Drive Forward 20, Turn 20 Clock, Face Target, Shoot Ball
    */
-  public Puffs() {
+  public Crow() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-addSequential(new ReverseReverse(-50));
-addSequential(new TurnToHeading(20));
-addSequential(new FaceTarget());
-addSequential(new ShootAutoBack());
-    // To run multiple commands at the same time,
+    addSequential(new DriveFarAuto(20));
+    addSequential(new TurnToHeading(-20));
+    addSequential(new FaceTarget(), 2);
+    addSequential(new ShootAutoFront());
+    
+
+
+    // To run multiple commands at the )same time,
     // use addParallel()
     // e.g. addParallel(new Command1());
     // addSequential(new Command2());

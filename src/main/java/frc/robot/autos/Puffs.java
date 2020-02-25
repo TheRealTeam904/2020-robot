@@ -5,24 +5,28 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.autos;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.FaceTarget;
+import frc.robot.ReverseReverse;
+import frc.robot.ShootAutoBack;
+import frc.robot.TurnToHeading;
 
-public class Cheeto extends CommandGroup {
+public class Puffs extends CommandGroup {
   /**
    * Add your docs here.
+   * reverse 50, turn counter clock 20, face target, shoot
    */
-  public Cheeto() {
+  public Puffs() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addSequential(new TurnToHeading(45));
-    addSequential(new DriveFarAuto(20));
-    addSequential(new FaceTarget(), 2);
-    addSequential(new ShootAutoFront());
-
+addSequential(new ReverseReverse(-50));
+addSequential(new TurnToHeading(20));
+addSequential(new FaceTarget(), 2);
+addSequential(new ShootAutoBack());
     // To run multiple commands at the same time,
     // use addParallel()
     // e.g. addParallel(new Command1());

@@ -5,22 +5,28 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.autos;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.FaceTarget;
+import frc.robot.ReverseReverse;
+import frc.robot.ShootAutoBack;
+import frc.robot.TurnToHeading;
 
-public class Pitbull extends CommandGroup {
+public class Pigeon extends CommandGroup {
   /**
    * Add your docs here.
+   * Reverse 20, turn clock 20, face target, shoot
    */
-  public Pitbull() {
+  public Pigeon() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addSequential(new DriveFarAuto(20));
-    addSequential(new FaceTarget());
-    addSequential(new ShootAutoFront());
+    addSequential(new ReverseReverse(-20));
+    addSequential(new TurnToHeading(-20));
+    addSequential(new FaceTarget(), 2);
+    addSequential(new ShootAutoBack());
     // To run multiple commands at the same time,
     // use addParallel()
     // e.g. addParallel(new Command1());

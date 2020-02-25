@@ -5,24 +5,29 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.autos;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.DriveFarAuto;
+import frc.robot.FaceTarget;
+import frc.robot.ShootAutoBack;
+import frc.robot.ShootAutoFront;
+import frc.robot.TurnToHeading;
 
-public class BlueDove extends CommandGroup {
+public class Robin extends CommandGroup {
   /**
    * Add your docs here.
+   * turn counter clock 45, forward 20, face target, shoot
    */
-  public BlueDove() {
+  public Robin() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addSequential(new TurnToHeading(45));
-    addSequential(new ReverseReverse(-60));
     addSequential(new TurnToHeading(-45));
+    addSequential(new DriveFarAuto(20));
     addSequential(new FaceTarget(), 2);
-    addSequential(new ShootAutoBack());
+    addSequential(new ShootAutoFront());
     // To run multiple commands at the same time,
     // use addParallel()
     // e.g. addParallel(new Command1());

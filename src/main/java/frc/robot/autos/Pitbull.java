@@ -5,20 +5,26 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.autos;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.DriveFarAuto;
+import frc.robot.FaceTarget;
+import frc.robot.ShootAutoFront;
 
-public class Robin extends CommandGroup {
+public class Pitbull extends CommandGroup {
   /**
    * Add your docs here.
+   * forward 20, face target, shoot
    */
-  public Robin() {
+  public Pitbull() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-
+    addSequential(new DriveFarAuto(20));
+    addSequential(new FaceTarget(), 2);
+    addSequential(new ShootAutoFront());
     // To run multiple commands at the same time,
     // use addParallel()
     // e.g. addParallel(new Command1());

@@ -5,27 +5,27 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.autos;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.FaceTarget;
+import frc.robot.ReverseReverse;
+import frc.robot.ShootAutoBack;
 
-public class Dorito extends CommandGroup {
+public class Wolf extends CommandGroup {
   /**
    * Add your docs here.
+   * back-up, face target, shoot
    */
-  public Dorito() {
+  public Wolf() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addSequential(new DriveFarAuto(20));
-    addSequential(new TurnToHeading(-20));
-    addSequential(new FaceTarget());
-    addSequential(new ShootAutoFront());
-    
-
-
-    // To run multiple commands at the )same time,
+    addSequential(new ReverseReverse(-20));
+    addSequential(new FaceTarget(), 2);
+    addSequential(new ShootAutoBack());
+    // To run multiple commands at the same time,
     // use addParallel()
     // e.g. addParallel(new Command1());
     // addSequential(new Command2());
