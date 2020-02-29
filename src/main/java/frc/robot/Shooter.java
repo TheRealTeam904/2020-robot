@@ -21,8 +21,8 @@ public class Shooter extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
  
- private WPI_TalonSRX ShootMotor1 = new WPI_TalonSRX(8);
- private WPI_TalonSRX ShootMotor2 = new WPI_TalonSRX(9);
+ private WPI_TalonSRX ShootMotor1 = new WPI_TalonSRX(10);
+ private WPI_TalonSRX ShootMotor2 = new WPI_TalonSRX(11);
  private SpeedControllerGroup ShootMotors = new SpeedControllerGroup(ShootMotor1, ShootMotor2);
  double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
  public Shooter(){

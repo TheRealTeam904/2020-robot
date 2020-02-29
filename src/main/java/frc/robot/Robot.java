@@ -14,6 +14,7 @@ import com.ctre.phoenix.ErrorCode;
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -38,14 +39,16 @@ public class Robot extends TimedRobot {
   public static Shooter shooter;
   private Joystick m_DriveControl;
   private Joystick m_OperateControl;
+  public static BallPickUp ballpickup;
   PIDController VisionPIDController = new PIDController(0.02, 0.04, 0.004);
   double deadzone = .25;
   public static PigeonIMU pigeon;
 
   @Override
   public void robotInit() {
-    pigeon = new PigeonIMU(0);
-    drivetrain = new Drivetrain();
+   ballpickup = new BallPickUp();
+   pigeon = new PigeonIMU(0);
+   drivetrain = new Drivetrain();
    m_DriveControl = new Joystick(0);
    m_OperateControl = new Joystick(1);
    m_DriveControl.setYChannel(1);
@@ -64,6 +67,7 @@ public class Robot extends TimedRobot {
 
 
    SmartDashboard.putData("Autos", m_chooser);
+
   }
 
  @Override
@@ -92,6 +96,9 @@ public void teleopInit() {
   public void teleopPeriodic() {
 double Ydeadzone;
 double Xdeadzone;
+//double InDeadzone;
+//double OutDeadzone;
+
 if(Math.abs(m_DriveControl.getY())>deadzone) {
   Ydeadzone = Math.pow(m_DriveControl.getY(), 3);
 }else {
@@ -134,17 +141,27 @@ if(Math.abs(m_DriveControl.getX())>deadzone) {
 
 
 
-    if(m_OperateControl.getRawButton(4)){
+    if(m_OperateControl.getRawButton(6)){
       shooter.ShootMotorSelect();
     } else {
       shooter.ShootMotorSpeed(0);
     }
     
-    if(m_OperateControl.getRawButtonPressed(1)){
+    if(m_OperateControl.getRawButtonPressed(2)){
       shooter.SpeedSelectUp();
     }
-    if(m_OperateControl.getRawButtonPressed(2)){
+    if(m_OperateControl.getRawButtonPressed(3)){
       shooter.SpeedSelectDown();
+    }
+    if(m_OperateControl.getRawButton(7)){
+      ballpickup.PickUpControl(1.0);
+    } else{
+      ballpickup.PickUpControl(0);
+    }
+    if(m_OperateControl.getRawButton(8)){
+      ballpickup.PickUpControl(-1.0);
+    } else {
+      ballpickup.PickUpControl(0);
     }
   } 
 }
