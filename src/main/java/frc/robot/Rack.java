@@ -19,6 +19,10 @@ public class Rack extends Subsystem {
   // here. Call these from Commands.
   private WPI_TalonSRX RackMotor = new WPI_TalonSRX(3);
 
+  public void Rackpivit(double speed){
+    RackMotor.set(speed);
+  }
+
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

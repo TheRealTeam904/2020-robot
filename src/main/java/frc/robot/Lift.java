@@ -19,6 +19,9 @@ public class Lift extends Subsystem {
   // here. Call these from Commands.
   private WPI_TalonSRX LiftMotor = new WPI_TalonSRX(7);
 
+ public void Lifttheball(double speed){
+   LiftMotor.set(speed);
+ }
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.

@@ -43,9 +43,13 @@ public class Robot extends TimedRobot {
   PIDController VisionPIDController = new PIDController(0.02, 0.04, 0.004);
   double deadzone = .25;
   public static PigeonIMU pigeon;
+  public static Rack rack;
+  public static Lift lift;
 
   @Override
   public void robotInit() {
+    lift = new Lift();
+  rack = new Rack();
    ballpickup = new BallPickUp();
    pigeon = new PigeonIMU(0);
    drivetrain = new Drivetrain();
@@ -121,7 +125,7 @@ if(Math.abs(m_DriveControl.getX())>deadzone) {
     SmartDashboard.putString("Pigeon Error Code", pigeonResult.toString());
     SmartDashboard.putString("Pigeon General Status Error Code", generalStatusResult.toString());
     SmartDashboard.putString("Pigeon General Status", genStatus.toString());
-
+  //tracks limelight target
     if(m_DriveControl.getRawButton(5)){
       double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(2);
       double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
@@ -140,28 +144,50 @@ if(Math.abs(m_DriveControl.getX())>deadzone) {
     }
 
 
-
+// shoots ball
     if(m_OperateControl.getRawButton(6)){
       shooter.ShootMotorSelect();
     } else {
       shooter.ShootMotorSpeed(0);
     }
-    
+    //speeds up shoot motor
     if(m_OperateControl.getRawButtonPressed(2)){
       shooter.SpeedSelectUp();
     }
+    //slows down shoot motor
     if(m_OperateControl.getRawButtonPressed(3)){
       shooter.SpeedSelectDown();
     }
+    //picks up ball
     if(m_OperateControl.getRawButton(7)){
       ballpickup.PickUpControl(1.0);
+      lift.Lifttheball(1.0);
     } else{
       ballpickup.PickUpControl(0);
+      lift.Lifttheball(0);
     }
+    //lowers down ball
     if(m_OperateControl.getRawButton(8)){
       ballpickup.PickUpControl(-1.0);
+      lift.Lifttheball(-1.0);
     } else {
       ballpickup.PickUpControl(0);
+      lift.Lifttheball(0);
     }
+    //pivets ballrack down
+    if(m_OperateControl.getRawButton(5)){
+      rack.Rackpivit(0.20);
+    } else{
+      rack.Rackpivit(0);
+    }
+    //pivits ball rack down
+    if(m_OperateControl.getRawButton(5) && m_OperateControl.getRawButton(10)){
+      rack.Rackpivit(-0.25);
+    } else{
+      rack.Rackpivit(0);
+    }
+    //spin control panel
+
+    //climb the robot
   } 
 }
