@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Rack extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private WPI_TalonSRX RackMotor = new WPI_TalonSRX(3);
+  private WPI_TalonSRX RackMotor = new WPI_TalonSRX(7);
 
   public void Rackpivit(double speed){
     RackMotor.set(speed);

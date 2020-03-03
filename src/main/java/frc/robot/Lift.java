@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Lift extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private WPI_TalonSRX LiftMotor = new WPI_TalonSRX(7);
+  private WPI_TalonSRX LiftMotor = new WPI_TalonSRX(3);
 
  public void Lifttheball(double speed){
    LiftMotor.set(speed);
