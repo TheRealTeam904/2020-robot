@@ -125,6 +125,7 @@ if(Math.abs(m_DriveControl.getX())>deadzone) {
     SmartDashboard.putString("Pigeon Error Code", pigeonResult.toString());
     SmartDashboard.putString("Pigeon General Status Error Code", generalStatusResult.toString());
     SmartDashboard.putString("Pigeon General Status", genStatus.toString());
+    SmartDashboard.putNumber("Shooter RPM", shooter.getRpm());
   //tracks limelight target
     if(m_DriveControl.getRawButton(5)){
       double tx = NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(2);
@@ -159,21 +160,19 @@ if(Math.abs(m_DriveControl.getX())>deadzone) {
       shooter.SpeedSelectDown();
     }
     //picks up ball
-    if(m_OperateControl.getRawButton(7)){
+    if(m_OperateControl.getRawButton(8)){
       ballpickup.PickUpControl(1.0);
       lift.Lifttheball(1.0);
-    } else{
-      ballpickup.PickUpControl(0);
-      lift.Lifttheball(0);
     }
-    //lowers down ball
-    if(m_OperateControl.getRawButton(8)){
+    else if(m_OperateControl.getRawButton(12)){
       ballpickup.PickUpControl(-1.0);
       lift.Lifttheball(-1.0);
-    } else {
+    } 
+    else{
       ballpickup.PickUpControl(0);
       lift.Lifttheball(0);
     }
+
     //pivets ballrack down
     if(m_OperateControl.getRawButton(5)){
       rack.Rackpivit(0.20);

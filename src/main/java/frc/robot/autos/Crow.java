@@ -12,6 +12,7 @@ import frc.robot.DriveFarAuto;
 import frc.robot.FaceTarget;
 import frc.robot.ShootAutoFront;
 import frc.robot.TurnToHeading;
+import frc.robot.LiftInAuto;
 
 public class Crow extends CommandGroup {
   /**
@@ -26,6 +27,7 @@ public class Crow extends CommandGroup {
     addSequential(new DriveFarAuto(20));
     addSequential(new TurnToHeading(-20));
     addSequential(new FaceTarget(), 2);
+    addSequential(new LiftInAuto());
     addSequential(new ShootAutoFront());
     
 

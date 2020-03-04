@@ -12,6 +12,7 @@ import frc.robot.FaceTarget;
 import frc.robot.ReverseReverse;
 import frc.robot.ShootAutoBack;
 import frc.robot.TurnToHeading;
+import frc.robot.LiftInAuto;
 
 public class Pigeon extends CommandGroup {
   /**
@@ -26,6 +27,7 @@ public class Pigeon extends CommandGroup {
     addSequential(new ReverseReverse(-20));
     addSequential(new TurnToHeading(-20));
     addSequential(new FaceTarget(), 2);
+    addSequential(new LiftInAuto());
     addSequential(new ShootAutoBack());
     // To run multiple commands at the same time,
     // use addParallel()

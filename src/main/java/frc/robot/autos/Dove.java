@@ -12,6 +12,7 @@ import frc.robot.FaceTarget;
 import frc.robot.ReverseReverse;
 import frc.robot.ShootAutoBack;
 import frc.robot.TurnToHeading;
+import frc.robot.LiftInAuto;
 
 public class Dove extends CommandGroup {
   /**
@@ -27,6 +28,7 @@ public class Dove extends CommandGroup {
     addSequential(new ReverseReverse(-90));
     addSequential(new TurnToHeading(-45));
     addSequential(new FaceTarget(), 2);
+    addSequential(new LiftInAuto());
     addSequential(new ShootAutoBack());
     // To run multiple commands at the same time,
     // use addParallel()

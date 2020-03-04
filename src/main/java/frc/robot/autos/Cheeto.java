@@ -12,6 +12,7 @@ import frc.robot.DriveFarAuto;
 import frc.robot.FaceTarget;
 import frc.robot.ShootAutoFront;
 import frc.robot.TurnToHeading;
+import frc.robot.LiftInAuto;
 
 public class Cheeto extends CommandGroup {
   /**
@@ -26,7 +27,8 @@ public class Cheeto extends CommandGroup {
     addSequential(new TurnToHeading(45));
     addSequential(new DriveFarAuto(20));
     addSequential(new FaceTarget(), 2);
-    addSequential(new ShootAutoFront());
+    addParallel(new LiftInAuto());
+    addParallel(new ShootAutoFront());
 
     // To run multiple commands at the same time,
     // use addParallel()

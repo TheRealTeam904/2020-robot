@@ -20,10 +20,10 @@ public class BallPickUp extends Subsystem {
   // here. Call these from Commands.
   private WPI_TalonSRX BallMotor1 = new WPI_TalonSRX(4);
   private WPI_TalonSRX BallMotor2 = new WPI_TalonSRX(6);
-  private SpeedControllerGroup BallMotors = new SpeedControllerGroup(BallMotor1, BallMotor2);
 
   public void PickUpControl(double speed){
-    BallMotors.set(speed);
+    BallMotor1.set(speed);
+    BallMotor2.set(-speed);
   }
 
   @Override

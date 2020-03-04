@@ -13,6 +13,7 @@ import frc.robot.FaceTarget;
 import frc.robot.ShootAutoBack;
 import frc.robot.ShootAutoFront;
 import frc.robot.TurnToHeading;
+import frc.robot.LiftInAuto;
 
 public class Robin extends CommandGroup {
   /**
@@ -27,6 +28,7 @@ public class Robin extends CommandGroup {
     addSequential(new TurnToHeading(-45));
     addSequential(new DriveFarAuto(20));
     addSequential(new FaceTarget(), 2);
+    addSequential(new LiftInAuto());
     addSequential(new ShootAutoFront());
     // To run multiple commands at the same time,
     // use addParallel()

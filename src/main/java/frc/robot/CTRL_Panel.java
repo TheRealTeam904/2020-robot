@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class CTRL_Panel extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private WPI_TalonSRX Wheel = new WPI_TalonSRX(12);
+  private WPI_TalonSRX Wheel = new WPI_TalonSRX(10);
 
   @Override
   public void initDefaultCommand() {
