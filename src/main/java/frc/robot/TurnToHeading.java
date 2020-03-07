@@ -16,9 +16,9 @@ public class TurnToHeading extends Command {
    * Creates a new TurnToHeading.
    */
   double disireddirection;
-  double FacingDirection = 0.0;
+  double FacingDirection;
   double [] ypr_deg = new double [3];
-  PIDController turnRateController = new PIDController(0.03, 0.04, 0.004);
+  PIDController turnRateController = new PIDController(0.02, 0.04, 0.004);
   public TurnToHeading(double direction) {
     disireddirection = direction;
     // Use addRequirements() here to declare subsystem dependencies.
@@ -32,7 +32,7 @@ public class TurnToHeading extends Command {
     turnRateController.setTolerance(3);
     turnRateController.enableContinuousInput(0, 360);
     Robot.pigeon.getYawPitchRoll(ypr_deg);
-    turnRateController.setSetpoint(Mod360 (disireddirection + FacingDirection));
+    turnRateController.setSetpoint(Mod360 (disireddirection + ypr_deg[0]));
     SmartDashboard.putNumber("desiredTurn", disireddirection);
   }
   public double Mod360(double x){

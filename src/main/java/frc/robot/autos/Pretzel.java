@@ -26,12 +26,12 @@ public class Pretzel extends CommandGroup {
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addSequential(new TurnToHeading(-45), 1);
+    addSequential(new TurnToHeading(-45), 1.5);
     addSequential(new ReverseReverse(-60));
-    addSequential(new TurnToHeading(90));
+    addSequential(new TurnToHeading(45), 1.5);
     addSequential(new FaceTarget(), 2);
-addParallel(new LiftInAuto());
-    addSequential(new ShootAutoBack(), 7);
+    addSequential(new ShootAutoBack(), 3);
+    addSequential(new LiftInAuto(), 5);
     addParallel(new StopLiftAuto());
     addSequential(new StopShootAuto());
     // To run multiple commands at the same time,

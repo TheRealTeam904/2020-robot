@@ -27,11 +27,11 @@ public class Robin extends CommandGroup {
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addSequential(new TurnToHeading(-45), 1);
-    addSequential(new DriveFarAuto(20));
+    addSequential(new TurnToHeading(-42), 2);
+    addSequential(new DriveFarAuto(30));
     addSequential(new FaceTarget(), 2);
-    addParallel(new LiftInAuto());
-    addSequential(new ShootAutoFront(), 7);
+    addSequential(new ShootAutoFront(), 3);
+    addSequential(new LiftInAuto(), 5);
     addParallel(new StopLiftAuto());
     addSequential(new StopShootAuto());
     // To run multiple commands at the same time,

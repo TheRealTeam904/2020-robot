@@ -29,8 +29,8 @@ public class Crow extends CommandGroup {
     addSequential(new DriveFarAuto(20));
     addSequential(new TurnToHeading(-20), 1);
     addSequential(new FaceTarget(), 2);
-    addParallel(new LiftInAuto());
-    addSequential(new ShootAutoFront(), 7);
+    addSequential(new ShootAutoFront(), 3);
+    addSequential(new LiftInAuto(), 5);
     addParallel(new StopLiftAuto());
     addSequential(new StopShootAuto());
 

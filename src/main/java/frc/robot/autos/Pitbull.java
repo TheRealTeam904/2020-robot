@@ -27,8 +27,8 @@ public class Pitbull extends CommandGroup {
     // these will run in order.
     addSequential(new DriveFarAuto(20));
     addSequential(new FaceTarget(), 2);
-    addParallel(new LiftInAuto());
-    addSequential(new ShootAutoFront(), 7);
+    addSequential(new ShootAutoFront(), 3);
+    addSequential(new LiftInAuto(), 5);
     addParallel(new StopLiftAuto());
     addSequential(new StopShootAuto());
     // To run multiple commands at the same time,

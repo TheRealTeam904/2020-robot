@@ -29,8 +29,8 @@ public class Pigeon extends CommandGroup {
     addSequential(new ReverseReverse(-20));
     addSequential(new TurnToHeading(-20), 1);
     addSequential(new FaceTarget(), 2);
-    addParallel(new LiftInAuto());
-    addSequential(new ShootAutoBack(), 7);
+    addSequential(new ShootAutoBack(), 3);
+    addSequential(new LiftInAuto(), 5);
     addParallel(new StopLiftAuto());
     addSequential(new StopShootAuto());
     // To run multiple commands at the same time,

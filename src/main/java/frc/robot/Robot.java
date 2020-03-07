@@ -45,11 +45,13 @@ public class Robot extends TimedRobot {
   public static PigeonIMU pigeon;
   public static Rack rack;
   public static Lift lift;
+  public static CTRL_Panel Wheel;
 
   @Override
   public void robotInit() {
-    lift = new Lift();
-  rack = new Rack();
+   Wheel = new CTRL_Panel();
+   lift = new Lift();
+   rack = new Rack();
    ballpickup = new BallPickUp();
    pigeon = new PigeonIMU(0);
    drivetrain = new Drivetrain();
@@ -72,6 +74,7 @@ public class Robot extends TimedRobot {
 
    SmartDashboard.putData("Autos", m_chooser);
 
+   SmartDashboard.putNumber("SpeedShootAuto", );
   }
 
  @Override
@@ -163,30 +166,42 @@ if(Math.abs(m_DriveControl.getX())>deadzone) {
     //picks up ball
     if(m_OperateControl.getRawButton(8)){
       ballpickup.PickUpControl(1.0);
-      lift.Lifttheball(1.0);
+
     }
     else if(m_OperateControl.getRawButton(7)){
       ballpickup.PickUpControl(-1.0);
-      lift.Lifttheball(-1.0);
+
     } 
     else{
       ballpickup.PickUpControl(0);
-      lift.Lifttheball(0);
+
     }
 
-    //pivets ballrack down
-    if(m_OperateControl.getRawButton(5)){
-      rack.Rackpivit(0.20);
-    } else{
-      rack.Rackpivit(0);
+    if(m_OperateControl.getRawButton(1)){
+      lift.Lifttheball(1.0);
     }
-    //pivits ball rack down
-    if(m_OperateControl.getRawButton(5) && m_OperateControl.getRawButton(10)){
+    else if(m_OperateControl.getRawButton(4)){
+      lift.Lifttheball(-1.0);
+    }
+    else{
+    lift.Lifttheball(0);
+    }
+    //pivets ballrack down
+    if(m_OperateControl.getRawButton(9)){
+      rack.Rackpivit(0.80);
+    } else if(m_OperateControl.getRawButton(10)){
       rack.Rackpivit(-0.25);
-    } else{
+    }
+     else{
       rack.Rackpivit(0);
     }
     //spin control panel
+    if(m_OperateControl.getRawButton(12)){
+      Wheel.SpeedOfCTRL(0.4);
+    }
+    else{
+      Wheel.SpeedOfCTRL(0);
+    }
 
     //climb the robot
   } 
