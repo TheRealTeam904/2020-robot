@@ -13,6 +13,8 @@ import frc.robot.ReverseReverse;
 import frc.robot.ShootAutoBack;
 import frc.robot.TurnToHeading;
 import frc.robot.LiftInAuto;
+import frc.robot.StopShootAuto;
+import frc.robot.StopLiftAuto;
 
 public class Pretzel extends CommandGroup {
   /**
@@ -24,12 +26,14 @@ public class Pretzel extends CommandGroup {
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addSequential(new TurnToHeading(-45));
+    addSequential(new TurnToHeading(-45), 1);
     addSequential(new ReverseReverse(-60));
-    addSequential(new TurnToHeading(45));
+    addSequential(new TurnToHeading(90));
     addSequential(new FaceTarget(), 2);
-    addSequential(new LiftInAuto());
-    addSequential(new ShootAutoBack());
+addParallel(new LiftInAuto());
+    addSequential(new ShootAutoBack(), 7);
+    addParallel(new StopLiftAuto());
+    addSequential(new StopShootAuto());
     // To run multiple commands at the same time,
     // use addParallel()
     // e.g. addParallel(new Command1());

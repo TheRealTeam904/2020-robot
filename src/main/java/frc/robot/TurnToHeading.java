@@ -16,7 +16,9 @@ public class TurnToHeading extends Command {
    * Creates a new TurnToHeading.
    */
   double disireddirection;
-  PIDController turnRateController = new PIDController(0.01, 0, 0);
+  double FacingDirection = 0.0;
+  double [] ypr_deg = new double [3];
+  PIDController turnRateController = new PIDController(0.03, 0.04, 0.004);
   public TurnToHeading(double direction) {
     disireddirection = direction;
     // Use addRequirements() here to declare subsystem dependencies.
@@ -29,11 +31,12 @@ public class TurnToHeading extends Command {
     SmartDashboard.putString("Current Command", "TurnToHeading");
     turnRateController.setTolerance(3);
     turnRateController.enableContinuousInput(0, 360);
-    double FacingDirection;
-    double [] ypr_deg = new double [3];
     Robot.pigeon.getYawPitchRoll(ypr_deg);
-    FacingDirection = ((ypr_deg[0] % 360) + 360) % 360;
-    turnRateController.setSetpoint((disireddirection + FacingDirection) % 360);
+    turnRateController.setSetpoint(Mod360 (disireddirection + FacingDirection));
+    SmartDashboard.putNumber("desiredTurn", disireddirection);
+  }
+  public double Mod360(double x){
+    return ((x % 360) + 360)% 360;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -41,7 +44,7 @@ public class TurnToHeading extends Command {
   public void execute() {
     double [] ypr_deg = new double [3];
     Robot.pigeon.getYawPitchRoll(ypr_deg);
-    double measurement = ((ypr_deg[0] % 360) + 360) % 360;
+    double measurement = Mod360(ypr_deg[0]);
     SmartDashboard.putNumber("Yaw", measurement);
     double controlOutput = -turnRateController.calculate(measurement);
     SmartDashboard.putNumber("ControlOutput", controlOutput);

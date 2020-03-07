@@ -8,33 +8,32 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class ShootAutoBack extends Command {
-  public ShootAutoBack() {
+public class StopLiftAuto extends Command {
+  public StopLiftAuto() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.shooter);
+    requires(Robot.lift);
     setInterruptible(true);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    SmartDashboard.putString("Current Command", "ShootInAuto");
+    SmartDashboard.putString("Current Command", "StopLiftAuto");
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.shooter.ShootMotorSpeed(0.60);
+    Robot.lift.Lifttheball(0);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true

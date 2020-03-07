@@ -28,7 +28,7 @@ public class ShootAutoFront extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.shooter.ShootMotorSpeed(0.66);
+    Robot.shooter.ShootMotorSpeed(0.55);
   }
 
   // Make this return true when this Command no longer needs to run execute()

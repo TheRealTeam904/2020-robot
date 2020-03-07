@@ -13,6 +13,8 @@ import frc.robot.FaceTarget;
 import frc.robot.ShootAutoFront;
 import frc.robot.TurnToHeading;
 import frc.robot.LiftInAuto;
+import frc.robot.StopShootAuto;
+import frc.robot.StopLiftAuto;
 
 public class Dorito extends CommandGroup {
   /**
@@ -25,11 +27,12 @@ public class Dorito extends CommandGroup {
     // addSequential(new Command2());
     // these will run in order.
     addSequential(new DriveFarAuto(20));
-    addSequential(new TurnToHeading(20));
+    addSequential(new TurnToHeading(20), 1);
     addSequential(new FaceTarget(), 2);
-    addSequential(new LiftInAuto());
-    addSequential(new ShootAutoFront());
-    
+    addParallel(new LiftInAuto());
+    addSequential(new ShootAutoFront(), 7);
+    addParallel(new StopLiftAuto());
+    addSequential(new StopShootAuto());
 
 
     // To run multiple commands at the )same time,

@@ -21,12 +21,17 @@ public class Shooter extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
  
- private WPI_TalonSRX ShootMotor1 = new WPI_TalonSRX(11);
- private WPI_TalonSRX ShootMotor2 = new WPI_TalonSRX(12);
- private SpeedControllerGroup ShootMotors = new SpeedControllerGroup(ShootMotor1, ShootMotor2);
+ private final WPI_TalonSRX ShootMotor1 = new WPI_TalonSRX(11);
+ private final WPI_TalonSRX ShootMotor2 = new WPI_TalonSRX(12);
+ private final WPI_TalonSRX ShootMotor3 = new WPI_TalonSRX(13);
+ private final WPI_TalonSRX ShootMotor4 = new WPI_TalonSRX(14);
+
+ private final SpeedControllerGroup ShootMotors = new SpeedControllerGroup(ShootMotor1, ShootMotor2, ShootMotor3, ShootMotor4);
  //double ty = NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
  public Shooter(){
    //ShootMotors.setInverted(true);
+   ShootMotor3.setInverted(true);
+   ShootMotor4.setInverted(true);
  }
 
  public double getRpm() {
@@ -43,14 +48,14 @@ public class Shooter extends Subsystem {
  }
 
  
- public void ShootMotorSpeed(double speed) {
+ public void ShootMotorSpeed(final double speed) {
   ShootMotors.set(speed);
  }
 
 double [] ShootSpeedTable = {0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 1.0};
 int ItemTracker = 0;
 public void ShootMotorSelect(){
-  double speed = ShootSpeedTable[ItemTracker];
+  final double speed = ShootSpeedTable[ItemTracker];
   ShootMotors.set(speed);
  }
 

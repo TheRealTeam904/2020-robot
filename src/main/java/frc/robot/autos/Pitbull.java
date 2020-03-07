@@ -12,6 +12,8 @@ import frc.robot.DriveFarAuto;
 import frc.robot.FaceTarget;
 import frc.robot.ShootAutoFront;
 import frc.robot.LiftInAuto;
+import frc.robot.StopShootAuto;
+import frc.robot.StopLiftAuto;
 
 public class Pitbull extends CommandGroup {
   /**
@@ -25,8 +27,10 @@ public class Pitbull extends CommandGroup {
     // these will run in order.
     addSequential(new DriveFarAuto(20));
     addSequential(new FaceTarget(), 2);
-    addSequential(new LiftInAuto());
-    addSequential(new ShootAutoFront());
+    addParallel(new LiftInAuto());
+    addSequential(new ShootAutoFront(), 7);
+    addParallel(new StopLiftAuto());
+    addSequential(new StopShootAuto());
     // To run multiple commands at the same time,
     // use addParallel()
     // e.g. addParallel(new Command1());

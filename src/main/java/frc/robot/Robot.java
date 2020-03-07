@@ -77,9 +77,10 @@ public class Robot extends TimedRobot {
  @Override
 public void autonomousInit() {
   super.autonomousInit();
-  /*if (autonomousCommand != null) {
+  if (autonomousCommand != null) {
     autonomousCommand.cancel();
-  }*/
+  }
+  
   autonomousCommand = m_chooser.getSelected();
   autonomousCommand.start();
 }
@@ -164,7 +165,7 @@ if(Math.abs(m_DriveControl.getX())>deadzone) {
       ballpickup.PickUpControl(1.0);
       lift.Lifttheball(1.0);
     }
-    else if(m_OperateControl.getRawButton(12)){
+    else if(m_OperateControl.getRawButton(7)){
       ballpickup.PickUpControl(-1.0);
       lift.Lifttheball(-1.0);
     } 

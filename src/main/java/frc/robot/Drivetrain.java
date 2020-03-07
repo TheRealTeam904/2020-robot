@@ -28,10 +28,10 @@ public class Drivetrain extends Subsystem {
   //private WPI_TalonSRX m_right2 = new WPI_TalonSRX(7);
   private SpeedControllerGroup m_right = new SpeedControllerGroup(m_right0, m_right1/*, m_right2*/);
   private DifferentialDrive m_myDrivetrain = new DifferentialDrive(m_left, m_right);
-  private int offset = 0;
+  private int offset;
 
   public void arcadeDrive(double throttle, double turnrate){
-    m_myDrivetrain.arcadeDrive(-throttle, -turnrate, false);
+    m_myDrivetrain.arcadeDrive(-throttle, turnrate, false);
     SmartDashboard.putNumber("throttle", throttle);
     SmartDashboard.putNumber("turnrate", turnrate);
   }
@@ -46,7 +46,7 @@ public class Drivetrain extends Subsystem {
     int fakeencoderticks = realencoderticks - offset;
     double inches = fakeencoderticks * 0.004601; 
     SmartDashboard.putNumber("Traveled Distance", inches);
-     return -inches;
+     return inches;
   }
 
   public void DistanceDistance(){

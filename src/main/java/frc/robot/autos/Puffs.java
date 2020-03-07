@@ -13,6 +13,8 @@ import frc.robot.ReverseReverse;
 import frc.robot.ShootAutoBack;
 import frc.robot.TurnToHeading;
 import frc.robot.LiftInAuto;
+import frc.robot.StopShootAuto;
+import frc.robot.StopLiftAuto;
 
 public class Puffs extends CommandGroup {
   /**
@@ -25,10 +27,12 @@ public class Puffs extends CommandGroup {
     // addSequential(new Command2());
     // these will run in order.
 addSequential(new ReverseReverse(-50));
-addSequential(new TurnToHeading(20));
+addSequential(new TurnToHeading(20), 1);
 addSequential(new FaceTarget(), 2);
-addSequential(new LiftInAuto());
-addSequential(new ShootAutoBack());
+addParallel(new LiftInAuto());
+addSequential(new ShootAutoBack(), 7);
+addParallel(new StopLiftAuto());
+addSequential(new StopShootAuto());
     // To run multiple commands at the same time,
     // use addParallel()
     // e.g. addParallel(new Command1());
