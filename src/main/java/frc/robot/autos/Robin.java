@@ -12,6 +12,7 @@ import frc.robot.DriveFarAuto;
 import frc.robot.FaceTarget;
 import frc.robot.ShootAutoBack;
 import frc.robot.ShootAutoFront;
+import frc.robot.ShootSpeedAT;
 import frc.robot.TurnToHeading;
 import frc.robot.LiftInAuto;
 import frc.robot.StopShootAuto;
@@ -30,7 +31,7 @@ public class Robin extends CommandGroup {
     addSequential(new TurnToHeading(-42), 2);
     addSequential(new DriveFarAuto(30));
     addSequential(new FaceTarget(), 2);
-    addSequential(new ShootAutoFront(), 3);
+    addSequential(new ShootSpeedAT(), 3);
     addSequential(new LiftInAuto(), 5);
     addParallel(new StopLiftAuto());
     addSequential(new StopShootAuto());

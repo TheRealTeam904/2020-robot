@@ -8,27 +8,26 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class SetSpeedSD extends Command {
-  public SetSpeedSD() {
+public class ShootSpeedAT extends Command {
+  private double SpeedOfAutoShoot;
+  public ShootSpeedAT() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.shooter);
-    setInterruptible(true);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    SmartDashboard.putString("Current Command", "ShootInAuto");
+    SpeedOfAutoShoot = SmartDashboard.getNumber("ShootSpeedInAuto", 0);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.shooter.ShootMotorSpeed(SmartDashboard.getNumber("SpeedShootAuto", 0.55));
+    SmartDashboard.putNumber("ShootSpeedInAuto", SpeedOfAutoShoot);
   }
 
   // Make this return true when this Command no longer needs to run execute()

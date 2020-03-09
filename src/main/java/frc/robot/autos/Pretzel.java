@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.FaceTarget;
 import frc.robot.ReverseReverse;
 import frc.robot.ShootAutoBack;
+import frc.robot.ShootSpeedAT;
 import frc.robot.TurnToHeading;
 import frc.robot.LiftInAuto;
 import frc.robot.StopShootAuto;
@@ -30,7 +31,7 @@ public class Pretzel extends CommandGroup {
     addSequential(new ReverseReverse(-60));
     addSequential(new TurnToHeading(45), 1.5);
     addSequential(new FaceTarget(), 2);
-    addSequential(new ShootAutoBack(), 3);
+    addSequential(new ShootSpeedAT(), 3);
     addSequential(new LiftInAuto(), 5);
     addParallel(new StopLiftAuto());
     addSequential(new StopShootAuto());

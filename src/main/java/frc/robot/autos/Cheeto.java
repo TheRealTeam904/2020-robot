@@ -11,11 +11,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.DriveFarAuto;
 import frc.robot.FaceTarget;
 import frc.robot.ShootAutoFront;
+import frc.robot.ShootSpeedAT;
 import frc.robot.TurnToHeading;
 import frc.robot.LiftInAuto;
 import frc.robot.StopShootAuto;
 import frc.robot.StopLiftAuto;
-import frc.robot.SetSpeedSD;
 
 public class Cheeto extends CommandGroup {
   /**
@@ -30,7 +30,7 @@ public class Cheeto extends CommandGroup {
     addSequential(new TurnToHeading(45), 1);
     addSequential(new DriveFarAuto(25));
     addSequential(new FaceTarget(), 2);
-    addSequential(new SetSpeedSD(), 3);
+    addSequential(new ShootSpeedAT(), 3);
     addSequential(new LiftInAuto(), 5);
     addParallel(new StopLiftAuto());
     addSequential(new StopShootAuto());

@@ -34,6 +34,7 @@ import frc.robot.autos.*;
  */
 public class Robot extends TimedRobot {
   private final SendableChooser<Command> m_chooser = new SendableChooser<>();
+  private final SendableChooser<Command> m_ball = new SendableChooser<>();
   private Command autonomousCommand;
   public static Drivetrain drivetrain;
   public static Shooter shooter;
@@ -74,7 +75,13 @@ public class Robot extends TimedRobot {
 
    SmartDashboard.putData("Autos", m_chooser);
 
-   SmartDashboard.putNumber("SpeedShootAuto", );
+   //m_ball.setDefaultOption("Firm", object);
+   //m_ball.addOption("Squishy", object);
+   //m_ball.addOption("Soft", object);
+
+   SmartDashboard.putData("Ball Quality", m_ball);
+
+   SmartDashboard.putNumber("ShootSpeedInAuto", SmartDashboard.getNumber("ShootSpeedInAuto", 1.0));
   }
 
  @Override

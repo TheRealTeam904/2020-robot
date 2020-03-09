@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.FaceTarget;
 import frc.robot.ReverseReverse;
 import frc.robot.ShootAutoBack;
+import frc.robot.ShootSpeedAT;
 import frc.robot.LiftInAuto;
 import frc.robot.StopShootAuto;
 import frc.robot.StopLiftAuto;
@@ -27,7 +28,7 @@ public class Wolf extends CommandGroup {
     // these will run in order.
     addSequential(new ReverseReverse(-20));
     addSequential(new FaceTarget(), 2);
-    addSequential(new ShootAutoBack(), 3);
+    addSequential(new ShootSpeedAT(), 3);
     addSequential(new LiftInAuto(), 5);
     addParallel(new StopLiftAuto());
     addSequential(new StopShootAuto());

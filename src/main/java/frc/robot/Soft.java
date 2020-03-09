@@ -8,26 +8,21 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class AutoSpeedShoot extends Command {
-  public AutoSpeedShoot() {
+public class Soft extends Command {
+  public Soft() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.shooter);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-   // SmartDashboard.getNumber("ShooterSpeedAuto", )
-   // SmartDashboard.putNumber("ShooterSpeedAuto", )
   }
 
   // Make this return true when this Command no longer needs to run execute()
