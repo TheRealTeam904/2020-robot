@@ -47,9 +47,11 @@ public class Robot extends TimedRobot {
   public static Rack rack;
   public static Lift lift;
   public static CTRL_Panel Wheel;
+  public static Climb climb;
 
   @Override
   public void robotInit() {
+    climb = new Climb();
    Wheel = new CTRL_Panel();
    lift = new Lift();
    rack = new Rack();
@@ -61,16 +63,16 @@ public class Robot extends TimedRobot {
    m_DriveControl.setYChannel(1);
    m_DriveControl.setXChannel(4);
    shooter = new Shooter();
-   m_chooser.setDefaultOption("Wolf", new Wolf());
-   m_chooser.addOption("PitBull", new Pitbull());
-   m_chooser.addOption("Crow", new Crow());
-   m_chooser.addOption("Dove", new Dove());
-   m_chooser.addOption("Robin", new Robin());
-   m_chooser.addOption("Pidgeon", new Pigeon());
-   m_chooser.addOption("Dorito", new Dorito());
-   m_chooser.addOption("Pretzel", new Pretzel());
-   m_chooser.addOption("Cheeto", new Cheeto());
-   m_chooser.addOption("Puffs", new Puffs());
+   m_chooser.setDefaultOption("CenBackShoot", new Wolf());
+   m_chooser.addOption("CenForShoot", new Pitbull());
+   m_chooser.addOption("LeftForwardRight", new Crow());
+   m_chooser.addOption("LeftCenBackShoot", new Dove());
+   m_chooser.addOption("LeftTurnForShoot", new Robin());
+   m_chooser.addOption("LeftBackTurnShoot", new Pigeon());
+   m_chooser.addOption("RightForTurnShoot", new Dorito());
+   m_chooser.addOption("RightCenBackShoot", new Pretzel());
+   m_chooser.addOption("RightTurnForShoot", new Cheeto());
+   m_chooser.addOption("RightBackTurnShoot", new Puffs());
 
 
    SmartDashboard.putData("Autos", m_chooser);
@@ -109,21 +111,28 @@ public void teleopInit() {
 
   @Override
   public void teleopPeriodic() {
-double Ydeadzone;
-double Xdeadzone;
+double Ydeadzonedrive;
+double Xdeadzonedrive;
+//double Ydeadzoneclimb;
 //double InDeadzone;
 //double OutDeadzone;
 
-if(Math.abs(m_DriveControl.getY())>deadzone) {
-  Ydeadzone = Math.pow(m_DriveControl.getY(), 3);
+/*if(Math.abs(m_OperateControl.getY())>deadzone) {
+  Ydeadzoneclimb = Math.pow(m_OperateControl.getY(), 3);
 }else {
-  Ydeadzone = 0;
+  Ydeadzoneclimb = 0;
+}*/
+
+if(Math.abs(m_DriveControl.getY())>deadzone) {
+  Ydeadzonedrive = Math.pow(m_DriveControl.getY(), 3);
+}else {
+  Ydeadzonedrive = 0;
 }
 
 if(Math.abs(m_DriveControl.getX())>deadzone) {
-  Xdeadzone = Math.pow(m_DriveControl.getX(), 3);
+  Xdeadzonedrive = Math.pow(m_DriveControl.getX(), 3);
 }else {
-  Xdeadzone = 0;
+  Xdeadzonedrive = 0;
 }
 
     double [] ypr_deg = new double[3];
@@ -146,15 +155,30 @@ if(Math.abs(m_DriveControl.getX())>deadzone) {
       SmartDashboard.putNumber("LimelightTX", tx);
       SmartDashboard.putNumber("LimelightTY", ty);
       double ControlX = VisionPIDController.calculate(-tx, 0);
-      drivetrain.arcadeDrive(-Ydeadzone, ControlX);
+      drivetrain.arcadeDrive(-Ydeadzonedrive, ControlX);
       SmartDashboard.putNumber("ControlX", ControlX);
     } else{
       NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(1);
       NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(1);
-      drivetrain.arcadeDrive(-Ydeadzone, Xdeadzone);
+      drivetrain.arcadeDrive(-Ydeadzonedrive, Xdeadzonedrive);
       VisionPIDController.reset();
     }
 
+    if(m_DriveControl.getRawButton(1)){
+      climb.SpeedOfClimb(1.0);
+    }
+    else if(m_DriveControl.getRawButton(2)){
+      climb.SpeedOfClimb(-1.0);
+    }
+    else if(m_DriveControl.getRawButton(3)){
+      climb.SpeedOfClimb(0.50);
+    }
+    else if(m_DriveControl.getRawButton(4)){
+      climb.SpeedOfClimb(-0.50);
+    }
+    else{
+      climb.SpeedOfClimb(0);
+    }
 
 // shoots ball
     if(m_OperateControl.getRawButton(6)){
@@ -210,6 +234,5 @@ if(Math.abs(m_DriveControl.getX())>deadzone) {
       Wheel.SpeedOfCTRL(0);
     }
 
-    //climb the robot
   } 
 }

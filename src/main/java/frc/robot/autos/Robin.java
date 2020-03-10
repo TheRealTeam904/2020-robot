@@ -21,7 +21,7 @@ import frc.robot.StopLiftAuto;
 public class Robin extends CommandGroup {
   /**
    * Add your docs here.
-   * turn counter clock 45, forward 20, face target, shoot
+   * turn clock 45, forward 20, face target, shoot
    */
   public Robin() {
     // Add Commands here:
