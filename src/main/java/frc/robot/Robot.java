@@ -183,6 +183,7 @@ if(Math.abs(m_DriveControl.getX())>deadzone) {
 // shoots ball
     if(m_OperateControl.getRawButton(6)){
       shooter.ShootMotorSelect();
+     
     } else {
       shooter.ShootMotorSpeed(0);
     }
