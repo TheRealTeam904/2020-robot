@@ -59,25 +59,17 @@ public class Shooter extends Subsystem {
 
 double [] ShootSpeedTable = {0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 1.0};
 int ItemTracker = 0;
-public double disiredRPM = 5700 * ShootSpeedTable[ItemTracker];
+public double disiredRPM = 9.5 * ShootSpeedTable[ItemTracker];
 public void ShootMotorSelect(){
   final double speed = ShootSpeedTable[ItemTracker];
 
   ShootMotors.set(speed);
-  if(ShootMotor2.getSensorCollection().getQuadratureVelocity() < disiredRPM + 20 && ShootMotor2.getSensorCollection().getQuadratureVelocity() > disiredRPM - 20 ){
+  if(ShootMotor2.getSensorCollection().getQuadratureVelocity() < disiredRPM + 2 &&  ShootMotor2.getSensorCollection().getQuadratureVelocity() > disiredRPM - 2 ){
     Lifttheball(1.0);
   } else{
     Lifttheball(0);
   }
  
-
-
-
-
-
-if(){
-
-}
 
 
 

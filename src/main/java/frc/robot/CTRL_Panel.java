@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class CTRL_Panel extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  private WPI_TalonSRX Wheel = new WPI_TalonSRX(10);
+  public WPI_TalonSRX coolname = new WPI_TalonSRX(10);
 
   @Override
   public void initDefaultCommand() {
@@ -26,7 +26,9 @@ public class CTRL_Panel extends Subsystem {
   }
 
   public void SpeedOfCTRL(final double speed){
-    Wheel.set(speed);
+    coolname.set(speed);
   }
-
+public double SpinTheWheel() {
+ return coolname.getSensorCollection().getQuadraturePosition();
+}
 }
