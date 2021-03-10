@@ -57,7 +57,7 @@ public class Shooter extends Subsystem {
   ShootMotors.set(speed);
  }
 
-double [] ShootSpeedTable = {0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 1.0};
+double [] ShootSpeedTable = {0.50, 0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85, 0.90, 0.95, 1.0};
 int ItemTracker = 0;
 public double disiredRPM = 9.5 * ShootSpeedTable[ItemTracker];
 public void ShootMotorSelect(){

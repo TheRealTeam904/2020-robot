@@ -48,11 +48,13 @@ public class Robot extends TimedRobot {
   public static Lift lift;
   public static CTRL_Panel Wheel;
   public static Climb climb;
+  public static ThreeToFive spinspin;
 
   @Override
   public void robotInit() {
     climb = new Climb();
    Wheel = new CTRL_Panel();
+   spinspin = new ThreeToFive();
    lift = new Lift();
    rack = new Rack();
    ballpickup = new BallPickUp();
@@ -106,7 +108,9 @@ public void autonomousPeriodic() {
 @Override
 public void teleopInit() {
   super.teleopInit();
-  //autonomousCommand.cancel();
+  if(autonomousCommand != null) {
+    autonomousCommand.cancel();
+  }
 }
 
   @Override
@@ -229,11 +233,13 @@ if(Math.abs(m_DriveControl.getX())>deadzone) {
     }
     //spin control panel
     if(m_OperateControl.getRawButton(12)){
-      Wheel.SpeedOfCTRL(0.4);
-    }
-    else{
-      Wheel.SpeedOfCTRL(0);
+      if(!Robot.spinspin.isRunning())
+      {
+        Robot.spinspin.start();
+      }
     }
 
+    SmartDashboard.putNumber("Wheel position", Wheel.SpinTheWheel());
+    Scheduler.getInstance().run();
   } 
 }

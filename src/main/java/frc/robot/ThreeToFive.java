@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class ThreeToFive extends Command {
   double disiredspins;
@@ -26,24 +27,26 @@ public class ThreeToFive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.Wheel.SpeedOfCTRL(1.0);
-    Robot.Wheel.SpinTheWheel();
+    Robot.Wheel.SpeedOfCTRL(0.40);
+    SmartDashboard.putNumber("Wheel position", Robot.Wheel.SpinTheWheel());
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.Wheel.SpinTheWheel() == 32*4096;
+    return Robot.Wheel.SpinTheWheel() >= 20*4096;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.Wheel.SpeedOfCTRL(0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }

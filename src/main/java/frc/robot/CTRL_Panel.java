@@ -7,6 +7,9 @@
 
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -17,7 +20,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class CTRL_Panel extends Subsystem {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
-  public WPI_TalonSRX coolname = new WPI_TalonSRX(10);
+  public TalonSRX coolname = new TalonSRX(10);
+  
+public CTRL_Panel() {
+  coolname.configOpenloopRamp(3.0);
+  coolname.setNeutralMode(NeutralMode.Coast);
+}
+
 
   @Override
   public void initDefaultCommand() {
@@ -26,7 +35,7 @@ public class CTRL_Panel extends Subsystem {
   }
 
   public void SpeedOfCTRL(final double speed){
-    coolname.set(speed);
+    coolname.set(ControlMode.PercentOutput, speed);
   }
 public double SpinTheWheel() {
  return coolname.getSensorCollection().getQuadraturePosition();
