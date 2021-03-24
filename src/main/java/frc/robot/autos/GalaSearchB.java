@@ -18,23 +18,32 @@ import frc.robot.ReverseReverse;
 import frc.robot.StopShootAuto;
 import frc.robot.StopLiftAuto;
 
-public class GalaSearchAC3 extends CommandGroup {
+public class GalaSearchB extends CommandGroup {
   /**
    * Add your docs here.
    * If this isn't done by March 24, just know that it is just a matter of messing with numbers
    */
-  public GalaSearchAC3() {
+  public GalaSearchB() {
     // Add Commands here:
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.
-    addSequential(new ReverseReverse(-60));
-    addSequential(new TurnToHeading(-30), 1.5);
-    addSequential(new ReverseReverse(-62));
-    addSequential(new TurnToHeading(60), 1.5);
-    addSequential(new ReverseReverse(-98));
+    addSequential(new TurnToHeading(-10), 1.5);
+    addSequential(new ReverseReverse(-120));
+    //addSequential(new LiftInAuto(), 5);
+    //addSequential(new StopLiftAuto());
+    addSequential(new TurnToHeading(135), 3.5);
+    addSequential(new ReverseReverse(-82));
+    //addSequential(new LiftInAuto(), 5);
+    //addSequential(new StopLiftAuto());
+    addSequential(new TurnToHeading(-140), 3.5);
+    addSequential(new ReverseReverse(-115));
+    //addSequential(new LiftInAuto(), 5);
+    //addSequential(new StopLiftAuto());
     addSequential(new TurnToHeading(-50), 1.5);
-    addSequential(new ReverseReverse(-60));
+    addSequential(new ReverseReverse(-63));
+    addSequential(new TurnToHeading(50), 1.5);
+    addSequential(new ReverseReverse(-70));
     // To run multiple commands at the same time,
     // use addParallel()
     // e.g. addParallel(new Command1());
