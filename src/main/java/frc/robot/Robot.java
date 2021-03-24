@@ -75,7 +75,9 @@ public class Robot extends TimedRobot {
    m_chooser.addOption("RightCenBackShoot", new Pretzel());
    m_chooser.addOption("RightTurnForShoot", new Cheeto());
    m_chooser.addOption("RightBackTurnShoot", new Puffs());
-
+   m_chooser.addOption("C3path", new GalaSearchAC3());
+   m_chooser.addOption("C9path", new GalaSearchAC9());
+   m_chooser.addOption("D5path", new GalaSearchBD5());
 
    SmartDashboard.putData("Autos", m_chooser);
 
