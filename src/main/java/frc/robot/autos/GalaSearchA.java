@@ -29,11 +29,29 @@ public class GalaSearchA extends CommandGroup {
     // addSequential(new Command2());
     // these will run in order.
     addSequential(new ReverseReverse(-60));
-    addSequential(new TurnToHeading(-30), 1.5);
+    //addSequential(new LiftInAuto(), 5);
+    //addSequential(new StopLiftAuto());
+    addSequential(new TurnToHeading(-26), 1.5);
     addSequential(new ReverseReverse(-62));
-    addSequential(new TurnToHeading(60), 1.5);
+    //addSequential(new LiftInAuto(), 5);
+    //addSequential(new StopLiftAuto());
+    addSequential(new TurnToHeading(-18), 1.5);
+    addSequential(new ReverseReverse(-42));
+    //addSequential(new LiftInAuto(), 5);
+    //addSequential(new StopLiftAuto());
+    addSequential(new TurnToHeading(105), 1.5);
     addSequential(new ReverseReverse(-98));
-    addSequential(new TurnToHeading(-50), 1.5);
+    //addSequential(new LiftInAuto(), 5);
+    //addSequential(new StopLiftAuto());
+    addSequential(new TurnToHeading(-125), 2.5);
+    addSequential(new ReverseReverse(-62));
+    //addSequential(new LiftInAuto(), 5);
+    //addSequential(new StopLiftAuto());
+    addSequential(new TurnToHeading(10), 1.5);
+    addSequential(new ReverseReverse(-60));
+    //addSequential(new LiftInAuto(), 5);
+    //addSequential(new StopLiftAuto());
+    addSequential(new TurnToHeading(26), 1.5);
     addSequential(new ReverseReverse(-60));
     // To run multiple commands at the same time,
     // use addParallel()

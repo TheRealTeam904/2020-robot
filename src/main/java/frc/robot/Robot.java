@@ -78,6 +78,7 @@ public class Robot extends TimedRobot {
    m_chooser.addOption("Apath", new GalaSearchA());
    //m_chooser.addOption("C9path", new GalaSearchAC9());
    m_chooser.addOption("Bpath", new GalaSearchB());
+   m_chooser.addOption("liftautotest", new liftautotest());
 
    SmartDashboard.putData("Autos", m_chooser);
 

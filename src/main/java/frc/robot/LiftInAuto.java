@@ -15,7 +15,7 @@ public class LiftInAuto extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.lift);
-
+    requires(Robot.ballpickup);
   }
 
   // Called just before this Command runs the first time
@@ -27,6 +27,7 @@ public class LiftInAuto extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Robot.ballpickup.PickUpControl(1.0);
     Robot.lift.Lifttheball(0.5);
   }
 
